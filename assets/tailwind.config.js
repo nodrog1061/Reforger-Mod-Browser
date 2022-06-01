@@ -9,7 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'arma-orange': '#e2a850',
+        'arma-orange': '#e2a750',
+        'arma-black': '#303030',
+        'arma-green': '#565C54',
+        'arma-gray': '#222f34'
       }
     },
   },

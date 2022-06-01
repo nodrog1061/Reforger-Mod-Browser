@@ -5,7 +5,7 @@
 
     <%= for item <- @data["rows"] do%>
 
-        <%= Phoenix.View.render(WorkshopBrowserWeb.ComponentsView, "mod_card.html", %{name: item["name"], image_url: List.first(item["previews"])["url"]}) %>
+        <%= Phoenix.View.render(WorkshopBrowserWeb.ComponentsView, "mod_card.html", %{name: item["name"], image_url: List.first(List.first(item["previews"])["thumbnails"]["image/jpeg"])["url"], author: item["author"]["username"], downloads: item["subscriberCount"], rating: Number.Percentage.number_to_percentage(item["averageRating"]*100, precision: 0)}) %>
     <% end %>
     </div>
 </div>

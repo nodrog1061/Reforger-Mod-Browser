@@ -8,8 +8,22 @@
     <title><%= title() %></title>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+      #grad1 {
+        background-image: linear-gradient(to right, #e2a750 , hsla(120,100%,50%,0),hsla(120,100%,50%,0));
+      }
+
+      .arma-bg {
+        background-image: url("{static_path(@conn, "/images/bg_map.webp")}");
+      }
+    </style>
   </head>
-  <body class="bg-gray-900 container mx-auto">
+  <body class="container mx-auto" style="font-family: 'Roboto', sans-serif; background-image: url('/images/bg_map.webp'); background-attachment: fixed;">
       <%= @inner_content %>
   </body>
 </html>
