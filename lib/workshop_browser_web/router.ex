@@ -19,6 +19,7 @@ defmodule WorkshopBrowserWeb.Router do
 
     get "/", PageController, :index
     get "/modlist", ModController, :index
+    get "/item/:id", ModController, :show
   end
 
   # Other scopes may use custom stacks.

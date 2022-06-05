@@ -1,13 +1,17 @@
-<%# <div class="grid grid-flow-row-dense grid-cols-3 grid-rows-3"> %>
 <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-<h2 class="sr-only">Products</h2>
+
+<div class="bg-arma-gray rounded-lg">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
+        <div class="max-w-xl">
+        <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">Marshall's Reforger Mod Browser</h2>
+        <p class="mt-5 text-xl text-gray-400">Created By Lewis Taylor (Scott Marshall) </p>
+        </div>
+    </div>
+    </div>
+    <br>
     <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-
-    <%= for item <- @data["rows"] do%>
-
-        <%= Phoenix.View.render(WorkshopBrowserWeb.ComponentsView, "mod_card.html", %{name: item["name"], image_url: List.first(List.first(item["previews"])["thumbnails"]["image/jpeg"])["url"], author: item["author"]["username"], downloads: item["subscriberCount"], rating: Number.Percentage.number_to_percentage(item["averageRating"]*100, precision: 0)}) %>
-    <% end %>
+        <%= for item <- @data["rows"] do%>
+            <%= Phoenix.View.render(WorkshopBrowserWeb.ComponentsView, "mod_card.html", %{name: item["name"], image_url: List.first(List.first(item["previews"])["thumbnails"]["image/jpeg"])["url"], author: item["author"]["username"], downloads: item["subscriberCount"], rating: Number.Percentage.number_to_percentage(item["averageRating"]*100, precision: 0)}) %>
+        <% end %>
     </div>
 </div>
-
-<%# </div> %>
