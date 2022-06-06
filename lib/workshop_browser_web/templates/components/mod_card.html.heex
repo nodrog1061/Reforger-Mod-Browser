@@ -1,13 +1,13 @@
-<div class="group relative bg-arma-black border border-gray-200 rounded-lg flex flex-col overflow-hidden">
+<div class="transition ease-in-out delay-[50] hover:-translate-y-1 hover:scale-110 hover:bg-arma-green duration-300 group relative bg-arma-black border border-gray-200 rounded-lg flex flex-col overflow-hidden">
     <div class="aspect-w-16 aspect-h-9 bg-gray-200 group-hover:opacity-75">
-        <img src={@image_url} class="w-full h-full object-center object-cover sm:w-full sm:h-full">
+        <img src={@image_url} loading="lazy" class="w-full h-full object-center object-cover sm:w-full sm:h-full">
     </div>
     <div class="flex-1 p-4 space-y-2 flex flex-col">
         <h3 class="text-sm font-medium text-arma-orange">
-        <a href="#">
+        <%= link to: "/item/"<>@id do%>
             <span aria-hidden="true" class="absolute inset-0"></span>
             <b><%= @name %></b>
-        </a>
+        <% end %>
         </h3>
         <p class="text-sm text-white">By <%= @author %></p>
         <div id="grad1" class="h-1"></div>
