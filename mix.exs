@@ -48,7 +48,8 @@ defmodule WorkshopBrowser.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.5"},
       {:httpoison, "~> 1.8"},
-      {:number, "~> 1.0"}
+      {:number, "~> 1.0"},
+      {:phx_component_helpers, "~> 1.0"}
     ]
   end
 
