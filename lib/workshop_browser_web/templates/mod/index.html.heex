@@ -1,6 +1,6 @@
 <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
-<div class="bg-arma-gray rounded-lg">
+<div class="bg-arma-black rounded-lg border border-gray-200">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
         <div class="max-w-xl">
         <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">Marshall's Reforger Mod Browser</h2>
@@ -15,3 +15,33 @@
         <% end %>
     </div>
 </div>
+
+<nav class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
+  <div class="hidden sm:block">
+    <p class="text-sm text-arma-orange">
+      Showing
+      <span class="font-medium"><%=(@page * @quantity) - @quantity %></span>
+      to
+      <span class="font-medium"><%=@page * @quantity %></span>
+      of
+      <span class="font-medium"><%= @data["count"] %></span>
+      results
+    </p>
+  </div>
+  <div class="flex-1 flex justify-between sm:justify-end">
+    <%= if @page == 1 do %>
+        <a class="relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm font-medium rounded-md text-white bg-arma-black hover:bg-arma-green" style="cursor: no-drop;"> Previous </a>
+    <% else %>
+        <%= link(" Previous ", to: ("/modlist?page="<>Integer.to_string(@page-1)<>"&count="<>Integer.to_string @quantity), class: "ml-3 relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm font-medium rounded-md text-white bg-arma-black hover:bg-arma-green") %>
+    <% end %>
+    
+    <%= if Enum.count(@data["rows"]) == 0 do %>
+        <a class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm font-medium rounded-md text-white bg-arma-black hover:bg-arma-green" style="cursor: no-drop;" > Next </a>
+    <% else %>
+        <%= link(" Next ", to: ("/modlist?page="<>Integer.to_string(@page+1)<>"&count="<>Integer.to_string @quantity), class: "ml-3 relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm font-medium rounded-md text-white bg-arma-black hover:bg-arma-green") %>
+    <% end %>
+  </div>
+</nav>
+
+
+
