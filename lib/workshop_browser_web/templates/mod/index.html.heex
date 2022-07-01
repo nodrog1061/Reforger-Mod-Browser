@@ -1,9 +1,13 @@
-<div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+<div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
 
 <div class="bg-arma-black rounded-lg border border-gray-200">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
-        <div class="max-w-xl">
-        <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">Marshall's Reforger Mod Browser</h2>
+    <div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
+        <div class="max-w-2xl">
+        <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">Marshall's
+        </h2>
+        <div id="arma-divider" class="h-1"></div>
+        <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">Proof of Concept Reforger Mod Browser
+        </h2>
         <p class="mt-5 text-xl text-gray-400">Created By Lewis Taylor (Scott Marshall) </p>
         </div>
     </div>
@@ -13,10 +17,25 @@
         <%= for item <- @data["rows"] do%>
             <%= render(WorkshopBrowserWeb.ComponentsView, "mod_card.html", %{name: item["name"], image_url: List.first(List.first(item["previews"])["thumbnails"]["image/jpeg"])["url"], author: item["author"]["username"], downloads: item["subscriberCount"], rating: Number.Percentage.number_to_percentage(item["averageRating"]*100, precision: 0), id: item["id"]}) %>
         <% end %>
+        <div class="transition ease-in-out delay-[50] hover:-translate-y-1 hover:scale-105 hover:bg-arma-green duration-300 group relative bg-arma-black border border-gray-200 rounded-lg flex flex-col overflow-hidden">
+          <div class="flex-1 p-4 space-y-2 flex flex-col">
+              <h2 class="text-4xl font-extrabold text-arma-orange sm:text-5xl sm:tracking-tight lg:text-6xl">
+              <%= link to: "https://www.paypal.com/paypalme/AEsoftware" do%>
+                  <span aria-hidden="true" class="absolute inset-0"></span>
+                  <b>Like My Project?</b>
+              <% end %>
+              </h2>
+              <div id="arma-divider" class="h-2"></div>
+              <p class="text-xl text-gray-400">
+                  If you like my project, please consider donating to me this box will take you to my Paypal page where you can support further development of this project.
+              </p>
+              <i class="text-4xl font-extrabold text-gray-400 fa-brands fa-paypal"></i>
+          </div>
+      </div>
     </div>
 </div>
 
-<nav class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
+<nav class="px-4 py-3 flex items-center justify-between sm:px-6" aria-label="Pagination">
   <div class="hidden sm:block">
     <p class="text-sm text-arma-orange">
       Showing

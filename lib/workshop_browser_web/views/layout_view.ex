@@ -6,6 +6,6 @@ defmodule WorkshopBrowserWeb.LayoutView do
   @compile {:no_warn_undefined, {Routes, :live_dashboard_path, 2}}
 
   def title() do
-    "Awesome New Title!"
+    "Marshall's Proof of Concept Reforger Mod Browser"
   end
 end
