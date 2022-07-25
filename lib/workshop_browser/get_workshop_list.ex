@@ -1,22 +1,12 @@
-defmodule WorkshopBrowser.GetWorkshopList do
+defmodule WorkshopBrowser.GetWorkshopItem do
 
-  def get_by_popularity(page, orderDirection \\ "desc", limit \\ 50) do
+  def get_item(item) do
 
-    body =
-      Jason.encode!(%{
-        "orderBy" => "popularity",
-        "orderDirection" => orderDirection,
-        "reported" => false,
-        "limit" => limit,
-        "offset" => (page - 1) * limit
-      })
-
-    case HTTPoison.post("https://api-ar-workshop.bistudio.com/workshop-api/api/v3.0/assets/list", body, [{"Content-Type", "application/json"}]) do
+    case HTTPoison.get(System.get_env("API_URL")<> item) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         Jason.decode!(body)
       _ ->
         :error
-
     end
   end
 

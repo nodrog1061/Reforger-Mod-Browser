@@ -7,8 +7,8 @@
                 <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
                     <div class="flex items-center space-x-5">
                         <div>
-                            <h1 class="text-2xl font-bold text-arma-orange">NightOps - Everon 1985</h1>
-                            <p class="text-sm font-medium text-white">Created By <a href="#" class="text-arma-orange">Zeal666</a> on the <time datetime="2020-08-25">11th of June 2022</time></p>
+                            <h1 class="text-2xl font-bold text-arma-orange"><%= @data["name"] %></h1>
+                            <p class="text-sm font-medium text-white">Created By <a href="#" class="text-arma-orange"><%= @data["author"]["username"] %></a> on the <time datetime={@data["createdAt"]}><%= DateTime.from_iso8601(@data["createdAt"]) |> elem(1) |> Calendar.strftime("%B %-d, %Y") %></time></p>
                         </div>
                     </div>
                 </div>
@@ -21,6 +21,7 @@
 
         <div class="carousel relative shadow-2xl bg-arma-black">
           <div class="carousel-inner relative overflow-hidden w-full h-200">
+          <% IO.inspect(Enum.count(@data["screenshots"])) %>
             <!--Slide 1-->
             <input class="carousel-open hidden" type="radio" id="carousel-1" name="carousel" aria-hidden="true" checked="checked">
               <img src="https://ar-gcp-cdn.bistudio.com/image/b678/cef486797ba23d896e2f38c61b8267b9.jpg" alt="Two each of gray, white, and black shirts laying flat." class="w-full h-full carousel-item  object-center object-fill absolute opacity-0">
