@@ -1,3 +1,36 @@
+<head>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<style>
+  /* ---- .grid-item ---- */
+
+  .grid-sizer,
+  .grid-item {
+    width: 50%;
+  }
+
+  .grid-item {
+    float: left;
+  }
+
+  .grid-item img {
+    display: block;
+    width: 100%;
+  }
+</style>
+<script>
+    var $grid = $('.grid').masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      columnWidth: '.grid-sizer'
+    });
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress( function() {
+      $grid.masonry();
+    });  
+
+</script>
+</head>
+
 <main class="py-10">
     <div class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
 
@@ -17,43 +50,9 @@
 
         <!-- Image gallery -->
         <div class="bg-arma-black shadow sm:rounded-lg lg:col-start-1 lg:col-span-3">
-
-
-        <div class="carousel relative shadow-2xl bg-arma-black">
-          <div class="carousel-inner relative overflow-hidden w-full h-200">
-          <% IO.inspect(Enum.count(@data["screenshots"])) %>
-            <!--Slide 1-->
-            <input class="carousel-open hidden" type="radio" id="carousel-1" name="carousel" aria-hidden="true" checked="checked">
-              <img src="https://ar-gcp-cdn.bistudio.com/image/b678/cef486797ba23d896e2f38c61b8267b9.jpg" alt="Two each of gray, white, and black shirts laying flat." class="w-full h-full carousel-item  object-center object-fill absolute opacity-0">
-            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-            
-            <!--Slide 2-->
-            <input class="carousel-open hidden " type="radio" id="carousel-2" name="carousel" aria-hidden="true">
-              <img src="https://ar-gcp-cdn.bistudio.com/image/81d6/31765c9ea6e752f83f622144bef8cd71.jpg" alt="Two each of gray, white, and black shirts laying flat." class="w-full h-full carousel-item object-center object-fill absolute opacity-0">
-            <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
-            
-            <!--Slide 3-->
-            <input class="carousel-open hidden" type="radio" id="carousel-3" name="carousel" aria-hidden="true">
-              <img src="https://ar-gcp-cdn.bistudio.com/image/8d14/82737c18556791bfaf28ea436a605442.jpg" alt="Two each of gray, white, and black shirts laying flat." class="w-full h-full carousel-item object-center object-fill absolute opacity-0">
-            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-arma-orange hover:text-white rounded-full bg-arma-black hover:bg-arma-green leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-            <!-- Add additional indicators for each slide-->
-            <ol class="carousel-indicators">
-              <li class="inline-block mr-3">
-                <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-              </li>
-              <li class="inline-block mr-3">
-                <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-              </li>
-              <li class="inline-block mr-3">
-                <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-              </li>
-            </ol>
-            
-          </div>
+        <%= for image <- @data["screenshots"] do%>
+            <div class="grid-item shadow sm:rounded-lg"><img src={image["url"]} alt="Two each of gray, white, and black shirts laying flat."></div>
+        <% end %>
         </div>
 
 
@@ -81,7 +80,6 @@
 
 
             
-        </div>
       <div class="space-y-6 lg:col-start-1 lg:col-span-2">
         <!-- Description list-->
         
