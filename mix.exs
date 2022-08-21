@@ -49,7 +49,9 @@ defmodule WorkshopBrowser.MixProject do
       {:tailwind, "~> 0.1.5"},
       {:httpoison, "~> 1.8"},
       {:number, "~> 1.0"},
-      {:phx_component_helpers, "~> 1.0"}
+      {:phx_component_helpers, "~> 1.0"},
+      {:size, "~> 0.1.1"},
+      {:auto_linker, "~> 1.0"}
     ]
   end
 

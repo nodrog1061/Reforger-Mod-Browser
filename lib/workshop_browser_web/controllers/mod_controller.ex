@@ -1,17 +1,18 @@
 defmodule WorkshopBrowserWeb.ModController do
   use WorkshopBrowserWeb , :controller
   alias WorkshopBrowser.GetWorkshopList
+  alias WorkshopBrowser.GetWorkshopItem
 
   def index(conn, _params) do
 
-    render(conn, "index.html", getData(conn))
+    render(conn, "index.html", getListData(conn))
   end
 
   def show(conn, _params) do
-    render(conn, "item.html", getData(conn))
+    render(conn, "item.html", getItemData(conn))
   end
 
-  defp getData(conn) do
+  defp getListData(conn) do
     quantity =
       if conn.query_params["count"] == nil do
         20
@@ -34,6 +35,11 @@ defmodule WorkshopBrowserWeb.ModController do
       end
 
     %{data: GetWorkshopList.get_by_popularity(page, "desc", quantity), page: page, quantity: quantity}
+  end
+
+  defp getItemData(conn) do
+
+    %{data: GetWorkshopItem.get_item(conn.params["id"])}
   end
 
 end
